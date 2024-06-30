@@ -6,6 +6,28 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          'https://us-west-2.aws.neurelo.com/rest/Doctors?take=3',
+          {
+            headers: {
+              'X-API-KEY': ,
+            },
+          }
+        );
+        setDoctorData(response.data);
+        publishData(response.data);
+      } catch (error) {
+        setError(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
  
   return (
     <div>
