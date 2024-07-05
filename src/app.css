@@ -1,20 +1,135 @@
+/* App.css */
+
+body, html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 .App {
   text-align: center;
+  padding: 0;
+  margin: 0;
+  min-height: 100vh;
+  background-image: url('backgroundimg.jpeg'); /* Replace with your image path */
+  background-color: linear-gradient(rgb(159, 228, 255), rgb(177, 255, 177));
+  background-repeat: no-repeat;
+  background-attachment: fixed; 
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Start aligning items from the top */
+}
+
+.forms-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 25px; /* Adjust the top margin as needed */
+}
+
+.rectangle-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 25px; /* Adjust the top margin as needed */
+}
+
+.rounded-rectangle {
+  width: 250px;
+  height: 200 auto;
   padding: 20px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.108); /* White background with opacity */
+  backdrop-filter: blur(10px); /* Blur effect */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  border: 2px solid rgba(255, 255, 255, 0.472); /* Light border */
+  text-align: center;
+  margin-right: 20px; /* Add space between the forms */
 }
 
-form {
-  margin: 20px 0;
+.rounded-rectangle2 {
+  width: 670px;
+  height: 200 auto;
+  padding: 20px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.108); /* White background with opacity */
+  backdrop-filter: blur(10px); /* Blur effect */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  border: 2px solid rgba(255, 255, 255, 0.472); /* Light border */
+  text-align: center;
 }
 
-label {
-  margin-right: 10px;
+.form-column {
+  width: 400px; /* Set a fixed width for each form */
 }
 
-input {
-  margin-right: 10px;
+.symptom-title {
+  text-align: center;
+  margin-top: 80px;
+  margin-bottom: 10px;
+  font-size: 50px;
+  color: aliceblue;
 }
 
-button {
-  margin-left: 10px;
+.form-title {
+  color: aliceblue;
+  font-size: 40px;
+  text-align: left;
+  padding-left: 10px;
+  margin-top: 8px;
 }
+
+.form-text {
+  color: aliceblue;
+  font-size: 35px;
+  text-align: left;
+  padding-left: 10px;
+}
+
+.symptom-form-title {
+  color: aliceblue;
+  font-size: 40px;
+  text-align: left;
+  padding-left: 10px;
+  font-weight: bold;
+}
+
+.add-button {
+  width: 100px;
+  height: 30px;
+  border-radius: 10px;
+  border: none;
+  background-color: #4CAF50;
+  color: aliceblue;
+  font-weight: bold;
+}
+
+.symptoms-list-title {
+  color: aliceblue;
+  font-size: 35px;
+  text-align: left;
+  padding-left: 10px;
+  margin-top: 5px;
+}
+
+.symptom-list {
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center;
+  color: aliceblue;
+  font-size: 20px;
+  text-align: left;
+  padding-left: 10px;
+  padding-bottom: 4px;
+  margin-top: 0px;
+  padding-right: 10px; 
+  list-style-type: disc; 
+  list-style-position: inside;
+}
+
+
+
+button[type="submit"]:hover {
+  background-color: #3e8e41;
+}
+
