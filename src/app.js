@@ -17,15 +17,13 @@ function App() {
             },
           }
         );
-        setDoctorData(response.data);
-        publishData(response.data);
-      } catch (error) {
-        setError(error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
+        console.log('Data submitted successfully:', response.data);
+      setSubmitted(true);
+    } catch (error) {
+      console.error('Error submitting data:', error);
+      setSubmitError(error.message);
+    }
+  };
     fetchData();
   }, []);
  
