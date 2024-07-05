@@ -1,32 +1,63 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
+import NameAgeForm from './NameAgeForm';
+import SymptomForm from './SymptomForm';
+import SymptomList from './SymptomList';
+import './App.css';
 
 function App() {
-  const [doctorData, setDoctorData] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [step, setStep] = useState(1);
+  const [name, setName] = useState('');
+  const [age, setAge] = useState('');
+  const [symptoms, setSymptoms] = useState([]);
+  const [submitted, setSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState(null);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(
-          'https://us-west-2.aws.neurelo.com/rest/Doctors?take=3',
-          {
-            headers: {
-              'X-API-KEY': ,
-            },
-          }
-        );
-        console.log('Data submitted successfully:', response.data);
+  const handleNameAgeSubmit = (name, age) => {
+    setName(name);
+    setAge(age);
+    setStep(2);
+  };
+
+  const addSymptom = (symptom) => {
+    setSymptoms([...symptoms, symptom]);
+  };
+
+  const removeSymptom = (indexToRemove) => {
+    setSymptoms(symptoms.filter((_, index) => index !== indexToRemove));
+  };
+
+  const handleSubmit = async () => {
+    const patientData = {
+      name,
+      age: Number(age),
+      symptoms,
+    };
+    
+    var data = JSON.stringify(patientData);
+    
+    
+    try {
+      const response = await axios.post(
+        'https://us-west-2.aws.neurelo.com/rest/Patients/__one?',
+        data,
+        {
+          headers: {
+            'X-API-KEY': '',
+            'Content-Type': 'application/json',
+          },
+        }
+      );
+      console.log('Data submitted successfully:', response.data);
       setSubmitted(true);
     } catch (error) {
       console.error('Error submitting data:', error);
       setSubmitError(error.message);
     }
   };
-    fetchData();
-  }, []);
- 
+
+  if (submitted) return <p>Data submitted successfully!</p>;
+
   return (
     <div className="App">
       {step === 1 ? (
