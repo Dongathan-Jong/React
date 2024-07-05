@@ -28,14 +28,20 @@ function App() {
   }, []);
  
   return (
-    <div>
-      <h1>Neurelo Doctor Publisher</h1>
-      <h2>Top 3 Doctors:</h2>
-      <ul>
-        {doctorData.map(doctor => (
-          <li key={doctor.id}>{doctor.name}</li>
-        ))}
-      </ul>
+    <div className="App">
+      {step === 1 ? (
+        <NameAgeForm onSubmit={handleNameAgeSubmit} />
+      ) : (
+        <>
+          <h1>Symptom Checker</h1>
+          <p>Name: {name}</p>
+          <p>Age: {age}</p>
+          <SymptomForm onAddSymptom={addSymptom} />
+          <SymptomList symptoms={symptoms} removeSymptom={removeSymptom} />
+          <button onClick={handleSubmit}>Submit</button>
+          {submitError && <p>Error: {submitError}</p>}
+        </>
+      )}
     </div>
   );
 }
